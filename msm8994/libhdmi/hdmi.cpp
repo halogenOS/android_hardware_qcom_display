@@ -235,7 +235,7 @@ int HDMIDisplay::getModeCount() const {
 void HDMIDisplay::readCEUnderscanInfo()
 {
     int hdmiScanInfoFile = -1;
-    ssize_t len = -1;
+    size_t len = -1;
     char scanInfo[17];
     char *ce_info_str = NULL;
     char *save_ptr;
@@ -355,7 +355,7 @@ int HDMIDisplay::parseResolution(char* edidStr)
 
 bool HDMIDisplay::readResolution()
 {
-    ssize_t len = -1;
+    size_t len = -1;
     char edidStr[128] = {'\0'};
 
     int hdmiEDIDFile = openDeviceNode("edid_modes", O_RDONLY);
