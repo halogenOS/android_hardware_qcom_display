@@ -7,7 +7,7 @@ LOCAL_PROPRIETARY_MODULE      := true
 LOCAL_C_INCLUDES              := external/libdrm \
                                  $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_SHARED_LIBRARIES        := libdrm libdl
-LOCAL_CFLAGS                  := -DLOG_TAG=\"DRMUTILS\" -Wall -std=c++11 -Werror -fno-operator-names
+LOCAL_CFLAGS                  := -DLOG_TAG=\"DRMUTILS\" -Wall -std=c++11  -fno-operator-names
 LOCAL_CLANG                   := true
 ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
