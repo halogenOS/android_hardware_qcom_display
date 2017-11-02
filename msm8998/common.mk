@@ -29,11 +29,12 @@ endif
 common_includes += $(display_top)/include
 common_includes += $(display_top)/sdm/include
 common_includes += system/core/base/include
+common_includes += $(TOP)/frameworks/native/libs/nativebase/include
 
 common_header_export_path := qcom/display
 
 #Common libraries external to display HAL
-common_libs := liblog libutils libcutils libhardware
+common_libs := liblog libutils libcutils libhardware libbase
 
 ifeq ($(TARGET_IS_HEADLESS), true)
     LOCAL_CLANG := false
