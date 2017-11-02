@@ -60,10 +60,12 @@ common_flags += -isystem $(TARGET_OUT_HEADERS)/qcom/display
 endif
 endif
 
+common_includes += $(TOP)/frameworks/native/libs/nativebase/include
+
 common_header_export_path := qcom/display
 
 #Common libraries external to display HAL
-common_libs := liblog libutils libcutils libhardware
+common_libs := liblog libutils libcutils libhardware libbase
 common_deps  :=
 kernel_includes :=
 
