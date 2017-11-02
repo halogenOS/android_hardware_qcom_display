@@ -10,11 +10,12 @@ common_includes := $(display_top)/libqdutils
 common_includes += $(display_top)/libqservice
 common_includes += $(display_top)/libcopybit
 common_includes += $(display_top)/sdm/include
+common_includes += $(TOP)/frameworks/native/libs/nativebase/include
 
 common_header_export_path := qcom/display
 
 #Common libraries external to display HAL
-common_libs := liblog libutils libcutils libhardware
+common_libs := liblog libutils libcutils libhardware libbase
 
 #Common C flags
 common_flags := -DDEBUG_CALC_FPS -Wno-missing-field-initializers
