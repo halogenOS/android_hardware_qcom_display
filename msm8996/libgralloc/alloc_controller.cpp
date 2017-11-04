@@ -730,6 +730,7 @@ void getBufferAttributes(int width, int height, int format, int usage,
     size = getSize(format, width, height, usage, alignedw, alignedh);
 }
 
+#ifdef VENUS_COLOR_FORMAT
 void getYuvUbwcSPPlaneInfo(uint64_t base, int width, int height,
                            int color_format, struct android_ycbcr* ycbcr)
 {
@@ -759,6 +760,7 @@ void getYuvUbwcSPPlaneInfo(uint64_t base, int width, int height,
     ycbcr->ystride = y_stride;
     ycbcr->cstride = VENUS_UV_STRIDE(color_format, width);
 }
+#endif
 
 void getYuvSPPlaneInfo(uint64_t base, int width, int height, int bpp,
                        struct android_ycbcr* ycbcr)
@@ -818,6 +820,7 @@ int getYUVPlaneInfo(private_handle_t* hnd, struct android_ycbcr* ycbcr)
             getYuvSPPlaneInfo(hnd->base, width, height, 2, ycbcr);
         break;
 
+#ifdef VENUS_COLOR_FORMAT
         case HAL_PIXEL_FORMAT_YCbCr_420_SP_VENUS_UBWC:
             getYuvUbwcSPPlaneInfo(hnd->base, width, height,
                                   COLOR_FMT_NV12_UBWC, ycbcr);
@@ -829,6 +832,7 @@ int getYUVPlaneInfo(private_handle_t* hnd, struct android_ycbcr* ycbcr)
                                   COLOR_FMT_NV12_BPP10_UBWC, ycbcr);
             ycbcr->chroma_step = 3;
         break;
+#endif
 
         case HAL_PIXEL_FORMAT_YCrCb_420_SP:
         case HAL_PIXEL_FORMAT_YCrCb_422_SP:
