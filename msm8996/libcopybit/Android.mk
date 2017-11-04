@@ -26,8 +26,8 @@ LOCAL_MODULE                  := copybit.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_RELATIVE_PATH    := hw
 LOCAL_PROPRIETARY_MODULE      := true
 LOCAL_MODULE_TAGS             := optional
-LOCAL_C_INCLUDES              := $(common_includes) $(kernel_includes)
-LOCAL_SHARED_LIBRARIES        := $(common_libs) libdl libgralloc
+LOCAL_C_INCLUDES              := $(common_includes) $(kernel_includes) hardware/qcom/display/$(TARGET_BOARD_PLATFORM)/libgralloc/
+LOCAL_SHARED_LIBRARIES        := $(common_libs) libdl gralloc.$(TARGET_BOARD_PLATFORM)
 LOCAL_CFLAGS                  := $(common_flags) -DLOG_TAG=\"qdcopybit\" -Wno-sign-conversion
 LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 LOCAL_CLANG                   := true
