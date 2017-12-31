@@ -235,7 +235,7 @@ int HDMIDisplay::getModeCount() const {
 void HDMIDisplay::readCEUnderscanInfo()
 {
     int hdmiScanInfoFile = -1;
-    size_t len = -1;
+    unsigned long len = 0;
     char scanInfo[17];
     char *ce_info_str = NULL;
     char *save_ptr;
@@ -250,7 +250,7 @@ void HDMIDisplay::readCEUnderscanInfo()
         len = read(hdmiScanInfoFile, scanInfo, sizeof(scanInfo)-1);
         ALOGD("%s: Scan Info string: %s length = %lu",
                  __FUNCTION__, scanInfo, len);
-        if (len <= 0) {
+        if (len == 0) {
             close(hdmiScanInfoFile);
             ALOGE("%s: Scan Info file empty", __FUNCTION__);
             return;
@@ -355,7 +355,7 @@ int HDMIDisplay::parseResolution(char* edidStr)
 
 bool HDMIDisplay::readResolution()
 {
-    size_t len = -1;
+    unsigned long len = 0;
     char edidStr[128] = {'\0'};
 
     int hdmiEDIDFile = openDeviceNode("edid_modes", O_RDONLY);
@@ -365,7 +365,7 @@ bool HDMIDisplay::readResolution()
         len = read(hdmiEDIDFile, edidStr, sizeof(edidStr)-1);
         ALOGD_IF(DEBUG, "%s: EDID string: %s length = %lu",
                  __FUNCTION__, edidStr, len);
-        if (len <= 0) {
+        if (len == 0) {
             ALOGE("%s: edid_modes file empty", __FUNCTION__);
             edidStr[0] = '\0';
         }
