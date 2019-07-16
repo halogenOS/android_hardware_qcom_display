@@ -1,0 +1,17 @@
+// Remove after WFD moves to use libqdMetaData directly
+cc_library_shared {
+    name: "libqdMetaData.system.msm8996",
+    vendor_available: true,
+    cflags: [
+        "-Wno-sign-conversion",
+        "-DLOG_TAG=\"qdmetadata\"",
+    ],
+    shared_libs: [
+        "liblog",
+        "libcutils",
+        "libutils",
+    ],
+    header_libs: ["libhardware_headers", "display_intf_headers_msm8996"],
+    srcs: ["qdMetaData.cpp", "qd_utils.cpp"],
+    export_header_lib_headers: ["display_intf_headers_msm8996"],
+}
